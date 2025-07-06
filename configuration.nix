@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      <nixos-hardware/lenovo/thinkpad/t490>
+      #<nixos-hardware/lenovo/thinkpad/t490>
       ./hardware-configuration.nix
     ];
 
@@ -21,7 +21,7 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "thinkPad-nixos"; # Define your hostname.
+  networking.hostName = "t490-nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
