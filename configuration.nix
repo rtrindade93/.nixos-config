@@ -5,37 +5,9 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      #<nixos-hardware/lenovo/thinkpad/t490>
-      ./hardware-configuration.nix
-    ];
-
   # Enable flakes
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  networking.hostName = "t490-nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Enable bluetooth
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
   services.blueman.enable = true;
 
   # Set your time zone.
@@ -70,8 +42,7 @@
     shell = pkgs.zsh;
     packages = with pkgs; [
       zsh
-      firefox
-      brave
+      chromium
       neovim
       gcc
       lazygit
@@ -85,9 +56,6 @@
       cargo
     ];
   };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # Activate essential services
   services.xserver.enable = true;
@@ -167,21 +135,8 @@
     catppuccin-gtk
   ];
 
-  # Graphical acceleration support
-  hardware.graphics.enable = true;
-
   # Allow graphical login
   services.displayManager.autoLogin.enable = false;
-
-  # Enable zram
-  zramSwap.enable = true;
-
-  # Electron apps to use wayland
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-    OZONE_PLATFORM = "wayland";
-    MOZ_ENABLE_WAYLAND = "1";
-  };
 
   # limit number of versions stored
   nix.settings.auto-optimise-store = true;
@@ -213,5 +168,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
-
 }
