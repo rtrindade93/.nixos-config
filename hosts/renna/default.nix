@@ -7,6 +7,8 @@
   imports = [
     nixos-hardware.nixosModules.lenovo-thinkpad-t490
     ./hardware-configuration.nix
+    ../../modules/nix.nix
+    ../../modules/i18n.nix
   ];
 
   # Bootloader.
