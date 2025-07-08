@@ -34,29 +34,6 @@
     variant = "intl";
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.ricardo = {
-    isNormalUser = true;
-    description = "Ricardo Trindade";
-    extraGroups = [ "networkmanager" "wheel" "video" "audio" ];
-    shell = pkgs.zsh;
-    packages = with pkgs; [
-      zsh
-      chromium
-      neovim
-      gcc
-      lazygit
-      vscodium
-      fastfetch
-      dotnet-sdk_9
-      starship
-      tmux
-      unzip
-      nodejs
-      cargo
-    ];
-  };
-
   # Activate essential services
   services.xserver.enable = true;
   services.displayManager.sddm = {
@@ -161,9 +138,9 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # This value determines the NixOS release from which the default
+  # This value determines the NixOs release from which the default
   # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # on your system were taken. It's perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).

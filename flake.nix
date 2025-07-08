@@ -26,9 +26,16 @@
         system = system;
         specialArgs = { inherit nixpkgs nixos-hardware; };
         modules = [
-          ./hosts/renna
           # Import previous configuration
           ./configuration.nix
+          ./hosts/renna
+          ./users/ricardo
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.ricardo = import ./users/ricardo/home.nix;
+          }
         ];
       };
     };
