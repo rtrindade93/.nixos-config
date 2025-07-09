@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   nixos-hardware,
   ...
@@ -9,7 +10,12 @@
     ./hardware-configuration.nix
     ../../modules/nix.nix
     ../../modules/i18n.nix
-  ];
+    ../../modules/user.nix
+    ../../modules/home-manager.nix
+
+    # User variables  
+    ./variables.nix
+];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -18,7 +24,8 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "renna";
+  # Set hostname.
+  networking.hostName = config.var.hostname;
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -34,4 +41,7 @@
 
   # Enable zram
   zramSwap.enable = true;
+
+  # Import home manager config.
+  home-manager.users."${config.var.username}" = import ./home.nix;
 }

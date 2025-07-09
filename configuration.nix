@@ -88,6 +88,7 @@
   # Environment variables
   environment.sessionVariables = {
     HYPRSHOT_DIR = "$HOME/Pictures/Screenshots";
+    NIXOS_OZONE_WL = "1";
   };
 
   # Some programs need SUID wrappers, can be configured further or are

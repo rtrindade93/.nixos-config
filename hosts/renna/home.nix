@@ -4,9 +4,13 @@
   ...
 } :
 {
+  imports = [
+    ./variables.nix
+  ];
+
   home = {
-    username = "ricardo";
-    homeDirectory = "/home/ricardo";
+    inherit (config.var) username;
+    homeDirectory = "/home/" + config.var.username;
   };
 
   xdg = {
@@ -30,7 +34,6 @@
   };
 
   home.packages = with pkgs; [
-    zsh
     chromium
     brave
     neovim

@@ -29,13 +29,7 @@
           # Import previous configuration
           ./configuration.nix
           ./hosts/renna
-          ./users/ricardo
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.ricardo = import ./users/ricardo/home.nix;
-          }
+        home-manager.nixosModules.home-manager
         ];
       };
     };
