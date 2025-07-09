@@ -24,7 +24,7 @@
     in {
       nixosConfigurations.renna = nixpkgs.lib.nixosSystem {
         system = system;
-        specialArgs = { inherit nixpkgs nixos-hardware; };
+        specialArgs = inputs;
         modules = [
           # Import previous configuration
           ./configuration.nix

@@ -85,6 +85,11 @@
     enable = true;
   };
 
+  # Environment variables
+  environment.sessionVariables = {
+    HYPRSHOT_DIR = "$HOME/Pictures/Screenshots";
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

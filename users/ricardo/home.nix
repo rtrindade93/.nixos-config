@@ -4,8 +4,30 @@
   ...
 } :
 {
-  home.username = "ricardo";
-  home.homeDirectory = "/home/ricardo";
+  home = {
+    username = "ricardo";
+    homeDirectory = "/home/ricardo";
+  };
+
+  xdg = {
+    enable = true;
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+      music = null;
+      videos = null;
+      desktop = null;
+      download = "${config.home.homeDirectory}/Downloads";
+      pictures = "${config.home.homeDirectory}/Pictures";
+      documents = "${config.home.homeDirectory}/Documents";
+      templates = null;
+      publicShare = null;
+      extraConfig = {
+        XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/Pictures/Screenshots";
+        XDG_PROJECTS_DIR = "${config.home.homeDirectory}/Projects";
+      };
+    };
+  };
 
   home.packages = with pkgs; [
     zsh
