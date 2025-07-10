@@ -5,24 +5,11 @@
 { config, pkgs, ... }:
 
 {
-  services.blueman.enable = true;
-
-  # Activate essential services
-  services.xserver.enable = true;
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-    theme = "catppuccin-mocha";
-    package = pkgs.kdePackages.sddm;
-  };
-
   # Activate Hyprland
   programs.hyprland = {
     enable = true;
     withUWSM = true;
   };
-
-  programs.xfconf.enable = true;
 
   programs.thunar = {
     enable = true;
@@ -30,14 +17,6 @@
       thunar-archive-plugin
       thunar-volman
     ];
-  };
-
-  # Pipewire for audio
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    pulse.enable = true;
-    jack.enable = true;
   };
 
   # Fonts
@@ -56,7 +35,6 @@
     wget
     curl
     git
-    networkmanager
     hyprland
     hyprlock
     waybar
@@ -66,29 +44,15 @@
     wofi
     kitty
     wl-clipboard
-    networkmanagerapplet
     lshw
     catppuccin-cursors.mochaLight
     clipman
     xfce.thunar
     mako
-    (catppuccin-sddm.override {
-      flavor = "mocha";
-    })
-    catppuccin-gtk
   ];
-
-  # Allow graphical login
-  services.displayManager.autoLogin.enable = false;
 
   programs.zsh = {
     enable = true;
-  };
-
-  # Environment variables
-  environment.sessionVariables = {
-    HYPRSHOT_DIR = "$HOME/Pictures/Screenshots";
-    NIXOS_OZONE_WL = "1";
   };
 
   # Some programs need SUID wrappers, can be configured further or are

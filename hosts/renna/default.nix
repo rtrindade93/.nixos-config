@@ -6,16 +6,24 @@
 }:
 {
   imports = [
+    # Hardware configurations
     nixos-hardware.nixosModules.lenovo-thinkpad-t490
     ./hardware-configuration.nix
+
+    # Host variables
+    ./variables.nix
+
+    # Nix Modules
     ../../modules/nix.nix
     ../../modules/i18n.nix
+    ../../modules/network.nix
+    ../../modules/audio.nix
+    ../../modules/bluetooth.nix
     ../../modules/user.nix
     ../../modules/home-manager.nix
-
-    # User variables  
-    ./variables.nix
-];
+    ../../modules/sddm.nix
+    ../../modules/envVars.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -23,18 +31,6 @@
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  # Set hostname.
-  networking.hostName = config.var.hostname;
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Enable bluetooth
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
  
   # Graphical acceleration support
   hardware.graphics.enable = true;
