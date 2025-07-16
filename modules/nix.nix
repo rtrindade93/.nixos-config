@@ -1,9 +1,18 @@
 {
-  # Enable flakes
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix = {
+    settings = {
+      # Enable flakes
+      experimental-features = ["nix-command" "flakes"];
+      auto-optimise-store = true;
+    };
 
-  # limit number of versions stored
-  nix.settings.auto-optimise-store = true;
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 90d";
+    };
+  };
+
   boot.loader.systemd-boot.configurationLimit = 5;
 
   # This value determines the NixOs release from which the default

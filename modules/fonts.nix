@@ -4,6 +4,8 @@
 } :
 {
   fonts = {
+    enableDefaultPackages = false;
+
     packages = with pkgs; [
       nerd-fonts.ubuntu-sans
       nerd-fonts.ubuntu
@@ -13,6 +15,7 @@
       noto-fonts-emoji
 
       font-awesome
+      material-design-icons
 
       nerd-fonts.jetbrains-mono
     ];
