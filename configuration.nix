@@ -19,15 +19,6 @@
     ];
   };
 
-  # Fonts
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-emoji
-    font-awesome
-    nerd-fonts.jetbrains-mono
-  ];
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [

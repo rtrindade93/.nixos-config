@@ -19,6 +19,7 @@
     ../../modules/network.nix
     ../../modules/audio.nix
     ../../modules/bluetooth.nix
+    ../../modules/fonts.nix
     ../../modules/user.nix
     ../../modules/home-manager.nix
     ../../modules/sddm.nix
