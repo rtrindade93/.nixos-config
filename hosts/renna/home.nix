@@ -6,6 +6,8 @@
 {
   imports = [
     ./variables.nix
+
+    ../../home/catppuccin.nix
   ];
 
   home = {
