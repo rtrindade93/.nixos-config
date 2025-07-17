@@ -24,6 +24,7 @@
     ../../modules/home-manager.nix
     ../../modules/sddm.nix
     ../../modules/envVars.nix
+    ../../modules/theme.nix
   ];
 
   # Bootloader.

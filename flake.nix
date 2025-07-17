@@ -12,9 +12,11 @@
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+
+    catppuccin.url = "github:catppuccin/nix";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, ...}@inputs:
+  outputs = { self, nixpkgs, home-manager, ...}@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
